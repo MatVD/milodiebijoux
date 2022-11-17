@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.searchAndCart,
+.logoAndNav {
+  display: flex;
+  align-items: center;
+}
+
+.navul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.navli {
+  list-style: none;
+  margin-left: 16px;
+}
+
+.loop {
+  position: relative;
+  left: -5px;
+  top: 5px;
+}
+
+.searchBar {
+  border: 1px solid #91CAED;
+  border-radius: 5px;
+  padding: 8px 0;
+}
+
+.searchBar:focus {
+  border: 1px solid #91CAED;
+}
+
+.cart,
+.logo {
+  margin: 24px;
+  object-fit: contain;
+}
