@@ -5,8 +5,12 @@ import Logo from "../public/Logo.png";
 import styles from "../styles/Header.module.css";
 import Cart from "../public/shopping-bag.png";
 import Loop from "../public/search.png";
+import { useState } from "react";
 
 const Header = () => {
+  const [checked, setChecked] = useState(false)
+
+
   return (
     <header className={styles.header}>
       <div className={styles.logoAndNav}>
@@ -19,31 +23,41 @@ const Header = () => {
             width={60}
           />
         </Link>
+
+        <input id={styles.menuToggle} type="checkbox" />
+
+        <label
+          className={styles.menuButtonContainer}
+          htmlFor="menuToggle"
+        >
+          <div className={styles.menuButton}></div>
+        </label>
+
         <ul className={styles.navul}>
           <li className={styles.navli}>
-            <Link href="/boucles">Boucles</Link>
+            <Link href="/products/Boucles">Boucles</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/bracelets">Bracelets</Link>
+            <Link href="/products/Bracelets">Bracelets</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/colliers">Colliers</Link>
+            <Link href="/products/Colliers">Colliers</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/marques-pages">Marques-pages</Link>
+            <Link href="/products/Marques-pages">Marques-pages</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/parures">Parures</Link>
+            <Link href="/products/Parures">Parures</Link>
           </li>
         </ul>
       </div>
       <div className={styles.searchAndCart}>
-        <div>
-          <Image 
-          className={styles.loop} 
-          src={Loop} 
-          alt="Icone d'une loupe"
-          width={20}
+        <div style={{ display: "flex" }}>
+          <Image
+            className={styles.loop}
+            src={Loop}
+            alt="Icone d'une loupe"
+            width={25}
           />
           <input className={styles.searchBar} type="text" />
         </div>
@@ -53,7 +67,7 @@ const Header = () => {
             src={Cart}
             priority={true}
             alt="Cart"
-            width={40}
+            width={30}
           />
         </Link>
       </div>

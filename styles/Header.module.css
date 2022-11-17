@@ -8,38 +8,136 @@
 .searchAndCart,
 .logoAndNav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.navul {
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
-
-.navli {
-  list-style: none;
-  margin-left: 16px;
-}
 
 .loop {
   position: relative;
   left: -5px;
-  top: 5px;
+  top: 2px;
 }
 
 .searchBar {
-  border: 1px solid #91CAED;
+  border: 1px solid #91caed;
   border-radius: 5px;
   padding: 8px 0;
-}
-
-.searchBar:focus {
-  border: 1px solid #91CAED;
+  width: 180px;
 }
 
 .cart,
 .logo {
   margin: 24px;
   object-fit: contain;
+}
+
+.navul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navul > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.menuButtonContainer {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menuToggle {
+  display: none;
+}
+
+.menuButton,
+.menuButton::before,
+.menuButton::after {
+  display: block;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menuButton::before {
+  content: "";
+  margin-top: -8px;
+}
+
+.menuButton::after {
+  content: "";
+  margin-top: 8px;
+}
+
+#menuToggle:checked + .menuButtonContainer .menuButton::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menuToggle:checked + .menuButtonContainer .menuButton {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menuToggle:checked + .menuButtonContainer .menuButton::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 976px) {
+  .loop,
+  .searchBar {
+    display: none;
+  }
+  .logoAndNav {
+    width: 100%;
+  }
+  .menuButtonContainer {
+    display: flex;
+  }
+  .navul {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menuToggle ~ .navul li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menuToggle:checked ~ .navul li {
+    border: 1px solid #333;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .navul > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .navul > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
 }
