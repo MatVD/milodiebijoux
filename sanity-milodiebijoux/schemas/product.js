@@ -1,11 +1,11 @@
 export default {
   name: 'product',
-  title: 'Product',
+  title: 'Produit',
   type: 'document',
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Titre',
       type: 'string',
     },
     {
@@ -18,7 +18,7 @@ export default {
       },
     },
     {
-      title: 'Default variant',
+      title: 'Variant par default',
       name: 'defaultProductVariant',
       type: 'productVariant',
     },
@@ -45,12 +45,6 @@ export default {
       options: {
         layout: 'tags',
       },
-    },
-    {
-      name: 'vendor',
-      title: 'Vendor',
-      type: 'reference',
-      to: {type: 'vendor'},
     },
     {
       name: 'blurb',

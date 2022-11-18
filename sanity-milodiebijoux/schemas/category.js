@@ -1,11 +1,11 @@
 export default {
   name: 'category',
-  title: 'Category',
+  title: 'Catégorie',
   type: 'document',
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Titre',
       type: 'string',
     },
     {
@@ -24,7 +24,7 @@ export default {
     },
     {
       name: 'parents',
-      title: 'Parent categories',
+      title: 'Catégorie parente',
       type: 'array',
       of: [
         {
