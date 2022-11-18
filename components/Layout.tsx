@@ -4,7 +4,9 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 const Layout = ({ children }: any) => {
+
   return (
+
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />

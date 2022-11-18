@@ -8,11 +8,13 @@ import Loop from "../public/search.png";
 import { useState } from "react";
 
 const Header = () => {
-  const [checked, setChecked] = useState(false)
-
+  const [checked, setChecked] = useState(false);
 
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+      onClick={() => (checked ? setChecked(!checked) : null)}
+    >
       <div className={styles.logoAndNav}>
         <Link href="/">
           <Image
@@ -24,13 +26,17 @@ const Header = () => {
           />
         </Link>
 
-        <input id={styles.menuToggle} type="checkbox" />
-
-        <label
-          className={styles.menuButtonContainer}
-          htmlFor="menuToggle"
-        >
-          <div className={styles.menuButton}></div>
+        <input
+          id={styles.menuToggle}
+          type="checkbox"
+          checked={checked}
+          onChange={() => {}}
+        />
+        <label className={styles.menuButtonContainer} htmlFor="menuToggle">
+          <div
+            className={styles.menuButton}
+            onClick={() => setChecked(!checked)}
+          ></div>
         </label>
 
         <ul className={styles.navul}>
@@ -49,6 +55,17 @@ const Header = () => {
           <li className={styles.navli}>
             <Link href="/products/Parures">Parures</Link>
           </li>
+          <li className={`${styles.navli} ${styles.navSearch}`}>
+            <div style={{ display: "flex" }}>
+              <Image
+                className={styles.loop2}
+                src={Loop}
+                alt="Icone d'une loupe"
+                width={25}
+              />
+              <input className={styles.searchBar2} type="text" />
+            </div>
+          </li>
         </ul>
       </div>
       <div className={styles.searchAndCart}>
@@ -61,7 +78,7 @@ const Header = () => {
           />
           <input className={styles.searchBar} type="text" />
         </div>
-        <Link href="/cart">
+        <Link href="/Cart">
           <Image
             className={styles.cart}
             src={Cart}

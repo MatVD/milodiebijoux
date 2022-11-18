@@ -16,7 +16,7 @@
 .loop {
   position: relative;
   left: -5px;
-  top: 2px;
+  top: 4px;
 }
 
 .searchBar {
@@ -44,6 +44,10 @@
   overflow: hidden;
 }
 
+.navSearch {
+  display: none;
+}
+
 .menuButtonContainer {
   display: none;
   height: 100%;
@@ -62,22 +66,22 @@
 .menuButton::before,
 .menuButton::after {
   display: block;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(156, 154, 154);
   position: absolute;
-  height: 4px;
+  height: 3px;
   width: 30px;
   transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .menuButton::before {
   content: "";
-  margin-top: -8px;
+  margin-top: -6px;
 }
 
 .menuButton::after {
   content: "";
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 #menuToggle:checked + .menuButtonContainer .menuButton::before {
@@ -108,12 +112,25 @@
   .navul {
     position: absolute;
     top: 0;
-    margin-top: 50px;
+    margin-top: 100px;
     left: 0;
     flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: center;
+  }
+  .searchBar2 {
+    border: 1px solid #91caed;
+    border-radius: 5px;
+    padding: 8px 0;
+    width: 180px;
+  }
+  .loop2,
+  .searchBar2 {
+    display: flex;
+  }
+  .navSearch {
+    display: flex;
   }
   #menuToggle ~ .navul li {
     height: 0;
@@ -123,10 +140,15 @@
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   #menuToggle:checked ~ .navul li {
-    border: 1px solid #333;
+    border: 1px solid rgb(224, 224, 224);
     height: 2.5em;
     padding: 0.5em;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menuToggle:checked .header {
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
   }
   .navul > li {
     display: flex;
@@ -135,7 +157,7 @@
     padding: 0.5em 0;
     width: 100%;
     color: white;
-    background-color: #222;
+    background-color: #255a7b;
   }
   .navul > li:not(:last-child) {
     border-bottom: 1px solid #444;
