@@ -41,19 +41,19 @@ const Header = () => {
 
         <ul className={styles.navul}>
           <li className={styles.navli}>
-            <Link href="/products/Boucles">Boucles</Link>
+            <Link href="/products/boucles">Boucles</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/products/Bracelets">Bracelets</Link>
+            <Link href="/products/bracelets">Bracelets</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/products/Colliers">Colliers</Link>
+            <Link href="/products/colliers">Colliers</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/products/Marques-pages">Marques-pages</Link>
+            <Link href="/products/marques-pages">Marques-pages</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/products/Parures">Parures</Link>
+            <Link href="/products/parures">Parures</Link>
           </li>
           <li className={`${styles.navli} ${styles.navSearch}`}>
             <div style={{ display: "flex" }}>

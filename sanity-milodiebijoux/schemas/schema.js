@@ -7,7 +7,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import blockContent from './blockContent'
 import category from './category'
 import product from './product'
-import productVariant from './productVariant'
 import comments from './comments'
 
 import localeString from './locale/String'
@@ -32,6 +31,5 @@ export default createSchema({
     localeText,
     localeBlockContent,
     localeString,
-    productVariant,
   ]),
 })

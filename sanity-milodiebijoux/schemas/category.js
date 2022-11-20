@@ -20,7 +20,15 @@ export default {
     {
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'string',
+    },
+    {
+      title: 'Image',
+      name: 'image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      }
     },
     {
       name: 'parents',

@@ -1,11 +1,11 @@
 import { createClient } from 'next-sanity';
 
 const client = createClient({
-  projectId: "i5ilgqfl",
+  projectId: process.env.NEXT_PUBLIC_SANITY_ID,
   dataset: "production",
-  apiVersion: "2022-11-18",
+  apiVersion: "2021-10-21",
   useCdn: false,
-  token: "skBRds6zkgSGZZS9VC9ZyD64bkPUJyBcxJHP9nofVc6rlO9TrNgiEhCj9BuyHvjLxyQq7vQVAAmNQDgA6HCMt5koCiZgb6hlhzEsrqJAPDvTUIm79NIbWlWwVwpmKiPXLclUMRchsKMWJDIlqNZfprVFEGnx9smAZJqR3nXPI4FrdClTs6yk"
+  token: process.env.NEXT_PUBLIC_SANITY_TOKEN
 })
 
 export default client;

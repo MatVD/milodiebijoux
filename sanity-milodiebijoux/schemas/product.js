@@ -18,22 +18,6 @@ export default {
       },
     },
     {
-      title: 'Variant par default',
-      name: 'defaultProductVariant',
-      type: 'productVariant',
-    },
-    {
-      title: 'Variants',
-      name: 'variants',
-      type: 'array',
-      of: [
-        {
-          title: 'Variant',
-          type: 'productVariant',
-        },
-      ],
-    },
-    {
       title: 'Tags',
       name: 'tags',
       type: 'array',
@@ -47,9 +31,27 @@ export default {
       },
     },
     {
-      name: 'blurb',
-      title: 'Blurb',
-      type: 'localeString',
+      name: 'body',
+      title: 'Description',
+      type: 'localeBlockContent',
+    },
+    {
+      name: "price",
+      title: "Prix",
+      type: "number",
+    },
+    {
+      title: "Devise",
+      name: "currency",
+      type: "string",
+    },
+    {
+      title: 'Image',
+      name: 'image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      }
     },
     {
       name: 'categories',
@@ -62,18 +64,5 @@ export default {
         },
       ],
     },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'localeBlockContent',
-    },
   ],
-
-  preview: {
-    select: {
-      title: 'title',
-      manufactor: 'manufactor.title',
-      media: 'defaultProductVariant.images[0]',
-    },
-  },
 }

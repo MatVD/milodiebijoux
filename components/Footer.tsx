@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <hr className={styles.separate} />
       <div className={styles.wrapperfooter}>
-        <p>© Milodie Bijoux</p>
+        <p>©<span className={styles.copyrigth}> - Milodie Bijoux</span> </p>
         <div className={styles.confCgvContact}>
           <p>
             <Link href={"/Contact"}>Contact</Link>{" "}
