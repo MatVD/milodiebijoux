@@ -17,8 +17,6 @@ export async function getStaticProps() {
     currency
   }`);
 
-  console.log(categories);
-
   return {
     props: {
       categories,
