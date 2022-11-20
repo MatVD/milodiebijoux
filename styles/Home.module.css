@@ -11,17 +11,24 @@
   border-radius: 5px;
 }
 
-.wrapperCTA {
+.wrapperImageAndCTA {
   max-width: 1100px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin: 32px auto;
   text-align: center;
 }
 
+.wrapperCTA {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .h1 {
   font-weight: 500;
-  font-size: 2.5em;
+  font-size: 2.4em;
   color: #10A4FE;
 }
 
@@ -35,7 +42,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 96px 0;
+  margin: 96px auto;
 }
 
 .sectionProducts h2 {
@@ -51,14 +58,46 @@
   text-align: center;
 }
 
+.sectionAvis {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.avis1,
+.avis2 {
+  border: 1px solid #91caed;
+  width: 320px;
+  height: 200px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.initialCircle {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.initialText {
+  text-align: center;
+}
 @media (max-width: 976px) {
-  .wrapperCTA img {
+  .wrapperImageAndCTA img {
     display: none;
   }
   .bandeau {
-    height: 40vh;
+    height: 35vh;
+  }
+  .h1 {
+    font-size: 2.2em;
   }
   .sectionProducts {
-    margin: 80px 0;
+    margin: 64px 0;
   }
 }

@@ -43,11 +43,11 @@ export default function Home({ categories }: any) {
             fill
           />
         </section>
-        <div className={homeStyles.wrapperCTA}>
+        <div className={homeStyles.wrapperImageAndCTA}>
           <div>
             <Image src={Logo} alt="Big logo" width={200} />
           </div>
-          <div>
+          <div className={homeStyles.wrapperCTA}>
             <h1 className={homeStyles.h1}>
               Boucles d'oreilles - Colliers - Bagues
             </h1>
@@ -65,17 +65,31 @@ export default function Home({ categories }: any) {
                 className={homeStyles.imagesProducts}
                 src={category.image}
                 alt="zefhvzloi"
-                width={300}
-                height={200}
+                width={350}
+                height={280}
               />
             </div>
           ))}
         </section>
 
         <section className={homeStyles.sectionLivraison}>
-            <h2>Livraison</h2>
-            <p>Offerte pour une commande de plus de 10000€</p>
-            <Button/>
+          <h2>Livraison</h2>
+          <p>Offerte pour une commande de plus de 10000€</p>
+          <Button />
+        </section>
+
+        <section>
+          <h2 style={{textAlign: 'center'}}>Avis</h2>
+          <div className={homeStyles.sectionAvis}>
+            <div className={homeStyles.avis1}>
+              <div className={homeStyles.initialCircle}>MV</div>
+              <p className={homeStyles.initialText}>Ces bijoux sont magnifique ! Un coups de coeur pour cette créatrice</p>
+            </div>
+            <div className={homeStyles.avis2}>
+              <div className={homeStyles.initialCircle}>MV</div>
+              <p className={homeStyles.initialText}>Ces bijoux sont magnifique ! Un coups de coeur pour cette créatrice</p>
+            </div>
+          </div>
         </section>
       </>
     </>
