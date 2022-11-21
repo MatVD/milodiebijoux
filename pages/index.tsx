@@ -28,7 +28,7 @@ export default function Home({ categories }: any) {
   return (
     <>
       <Head>
-        <title>Milodie Bijoux - Page d'accueil</title>
+        <title>Milodie Bijoux - Page d&apos;accueil</title>
         <meta
           name="description"
           content="Milodie Bijoux - creation de bijoux"
@@ -49,7 +49,7 @@ export default function Home({ categories }: any) {
           </div>
           <div className={homeStyles.wrapperCTA}>
             <h1 className={homeStyles.h1}>
-              Boucles d'oreilles - Colliers - Bagues
+              Boucles d&apos;oreilles - Colliers - Bagues
             </h1>
             <p>Parce que vous le valez bien !</p>
             <Button />

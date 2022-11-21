@@ -9,6 +9,7 @@ import {
 import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function Cart() {
   const router= useRouter()
@@ -48,8 +49,9 @@ function Cart() {
         <div className="product-container">
           {1>= 1 && (
               <div className="product">
-                <img
+                <Image
                   src={'#'}
+                  alt="Image du panier"
                   className="cart-product-image"
                 />
                 <div className="item-desc">
