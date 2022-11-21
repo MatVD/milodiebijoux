@@ -50,7 +50,7 @@ const Header = () => {
             <Link href="/products/colliers">Colliers</Link>
           </li>
           <li className={styles.navli}>
-            <Link href="/products/marques-pages">Marques-pages</Link>
+            <Link href="/products/marquespages">Marques-pages</Link>
           </li>
           <li className={styles.navli}>
             <Link href="/products/parures">Parures</Link>

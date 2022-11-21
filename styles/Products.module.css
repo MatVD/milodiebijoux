@@ -9,3 +9,7 @@
 .wrapperProducts {
   text-align: center;
 }
+
+.wrapperProducts img {
+  border-radius: 5px;
+}
