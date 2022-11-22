@@ -5,26 +5,41 @@ import Image from "next/image";
 import homeStyles from "../styles/Home.module.css";
 import Logo from "../public/Logo.png";
 import Button from "../components/Button";
+import Link from "next/link";
 
 // getStaticProps => fetch data from sanity
 export async function getStaticProps() {
   const categories = await client.fetch(`*[_type == "category"]{
     title,
-    description,
-    price,
     "id": _id,
+    slug {
+      current
+    },
     "image": image.asset->url,
-    currency
   }`);
+
+
+  const imagesBanner = await client.fetch(`*[_type == "imageBanner"]{
+    title,
+    "id": _id,
+    slug {
+      current
+    },
+    "image": image.asset->url,
+  }`);
+
+  console.log(imagesBanner)
 
   return {
     props: {
       categories,
+      imagesBanner
     },
   };
 }
 
-export default function Home({ categories }: any) {
+export default function Home({ categories, imagesBanner }: any) {
+
   return (
     <>
       <Head>
@@ -35,10 +50,10 @@ export default function Home({ categories }: any) {
         />
       </Head>
       <>
-        <section className={homeStyles.bandeau}>
+        <section className={homeStyles.banner}>
           <Image
-            className={homeStyles.imagesProducts}
-            src={categories[4].image}
+            className={homeStyles.imagesProductsBanner}
+            src={imagesBanner[0].image}
             alt="zefhvzloi"
             fill
           />
@@ -51,7 +66,7 @@ export default function Home({ categories }: any) {
             <h1 className={homeStyles.h1}>
               Boucles d&apos;oreilles - Colliers - Bagues
             </h1>
-            <p>Parce que vous le valez bien !</p>
+            <h2>Parce que vous le valez bien !</h2>
             <Button />
           </div>
         </div>
@@ -59,15 +74,17 @@ export default function Home({ categories }: any) {
 
         <section className={homeStyles.sectionProducts}>
           {categories.map((category: any) => (
-            <div key={category.id} className={styles.wrapperProducts}>
+            <div key={category.id} className={homeStyles.wrapperProducts}>
               <h2>{category.title}</h2>
-              <Image
-                className={homeStyles.imagesProducts}
-                src={category.image}
-                alt="zefhvzloi"
-                width={350}
-                height={280}
-              />
+              <Link href={`/products/${category.slug.current}`}>
+                <Image
+                  className={homeStyles.imagesProducts}
+                  src={category.image}
+                  alt="zefhvzloi"
+                  width={350}
+                  height={280}
+                />
+              </Link>
             </div>
           ))}
         </section>
@@ -79,15 +96,21 @@ export default function Home({ categories }: any) {
         </section>
 
         <section>
-          <h2 style={{textAlign: 'center'}}>Avis</h2>
+          <h2 style={{ textAlign: "center" }}>Avis</h2>
           <div className={homeStyles.sectionAvis}>
             <div className={homeStyles.avis1}>
               <div className={homeStyles.initialCircle}>MV</div>
-              <p className={homeStyles.initialText}>Ces bijoux sont magnifique ! Un coups de coeur pour cette créatrice</p>
+              <p className={homeStyles.initialText}>
+                Ces bijoux sont magnifique ! Un coups de coeur pour cette
+                créatrice
+              </p>
             </div>
             <div className={homeStyles.avis2}>
               <div className={homeStyles.initialCircle}>MV</div>
-              <p className={homeStyles.initialText}>Ces bijoux sont magnifique ! Un coups de coeur pour cette créatrice</p>
+              <p className={homeStyles.initialText}>
+                Ces bijoux sont magnifique ! Un coups de coeur pour cette
+                créatrice
+              </p>
             </div>
           </div>
         </section>

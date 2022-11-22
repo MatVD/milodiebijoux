@@ -13,3 +13,8 @@
 .wrapperProducts img {
   border-radius: 5px;
 }
+
+.wrapperProducts img:hover {
+  transform: scale(104%);
+  overflow: hidden;
+}

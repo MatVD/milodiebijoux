@@ -12,6 +12,7 @@ import comments from './comments'
 import localeString from './locale/String'
 import localeText from './locale/Text'
 import localeBlockContent from './locale/BlockContent'
+import imageBanner from './imageBanner'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,8 +23,9 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    product,
     category,
+    product,
+    imageBanner,
     comments,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
