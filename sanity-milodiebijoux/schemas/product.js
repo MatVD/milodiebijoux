@@ -41,8 +41,8 @@ export default {
       type: "number",
     },
     {
-      title: "Devise",
       name: "currency",
+      title: "Devise",
       type: "string",
     },
     {

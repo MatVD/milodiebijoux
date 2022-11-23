@@ -15,8 +15,6 @@ export const getStaticProps = async (context: Context) => {
     "images": image.asset->url
   }`);
 
-  console.log(products);
-
   if (!products) {
     return {
       notFound: true,

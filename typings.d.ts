@@ -2,13 +2,15 @@
 // fichier source des définitions de typage Typescript
 
 export interface Context {
-  params: any,
+  params: {
+    slug: string
+  }
 }
 
 export interface Products {
-  _createdAt: any,
+  _createdAt: string,
   title: string,
-  _id: any,
+  _id: string,
   _type: string,
   price: number,
   currency: string,
@@ -20,6 +22,7 @@ export interface Products {
   slug: {
     current: string
   },
+  description: string,
   category: [
     {
       _ref: string

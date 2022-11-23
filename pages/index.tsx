@@ -28,8 +28,6 @@ export async function getStaticProps() {
     "image": image.asset->url,
   }`);
 
-  console.log(imagesBanner)
-
   return {
     props: {
       categories,
@@ -56,6 +54,7 @@ export default function Home({ categories, imagesBanner }: any) {
             src={imagesBanner[0].image}
             alt="zefhvzloi"
             fill
+            priority
           />
         </section>
         <div className={homeStyles.wrapperImageAndCTA}>
@@ -101,15 +100,13 @@ export default function Home({ categories, imagesBanner }: any) {
             <div className={homeStyles.avis1}>
               <div className={homeStyles.initialCircle}>MV</div>
               <p className={homeStyles.initialText}>
-                Ces bijoux sont magnifique ! Un coups de coeur pour cette
-                créatrice
+                Ces bijoux sont magnifique ! Un coups de coeur pour les oeuves de cette créatrice
               </p>
             </div>
             <div className={homeStyles.avis2}>
               <div className={homeStyles.initialCircle}>MV</div>
               <p className={homeStyles.initialText}>
-                Ces bijoux sont magnifique ! Un coups de coeur pour cette
-                créatrice
+                Ces bijoux sont magnifique ! Un coups de coeur pour les oeuves de cette créatrice
               </p>
             </div>
           </div>
