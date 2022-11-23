@@ -1,12 +1,9 @@
-import Image from 'next/image'
-import React from 'react'
-import client from '../../../client/client'
-import { Context, Products } from '../../../typings'
-
-type Props = {
-  productDetails: Products,
-  productsDetails: Products[]
-}
+import { GetStaticProps } from "next";
+import Image from "next/image";
+import React from "react";
+import client from "../../../client/client";
+import { Products } from "../../../typings";
+import styles from "../../../styles/ProductDetails.module.css";
 
 // This function gets called at build time
 export async function getStaticPaths() {
@@ -15,25 +12,25 @@ export async function getStaticPaths() {
     slug {
       current
     }
-  }`)
+  }`);
 
-  console.log(productsDetails)
-  
   // Get the paths we want to pre-render based on product
-  const paths = productsDetails.map(({productDetails}: Props) => ({
-    params: { slug: productDetails.slug.current },
-  }))
+  const paths = productsDetails.map((productDetails: Products) => ({
+    params: {
+      slug: productDetails.slug.current,
+    },
+  }));
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: 'blocking' }
+  return { paths, fallback: "blocking" };
 }
 
 // This also gets called at build time
-export async function getStaticProps({ params } : Context) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-  const productsDetails = await client.fetch(`*[_type == "product" && ${params.slug} ]{
+  const query = `*[_type == "product" && slug.current == $slug][0]{
     title,
     _id,
     price,
@@ -41,33 +38,50 @@ export async function getStaticProps({ params } : Context) {
     slug {
       current
     },
-    "image": image.asset._ref,
+    "image": image.asset->url,
     "description": body.fr[0].children[1].text
-  }`)
-  
+  }`;
+
+  const productDetails = await client.fetch(query, {
+    slug: params?.slug,
+  });
+
   // Pass post data to the page via props
-  return { 
-    props: { productsDetails } 
-  }
+  return {
+    props: { productDetails },
+  };
+};
+
+interface Props {
+  productDetails: Products;
 }
 
+const productDetails = ({ productDetails }: Props) => {
+  console.log(productDetails);
 
-const productDetails = ({productsDetails}: Props) => {
   return (
-    <section >
-          {productsDetails.map((productDetails: any) => (
-            <div key={productDetails.id} >
-              <h2>{productDetails.title}</h2>
-                <Image
-                  src={productDetails.image}
-                  alt="Détails produits"
-                  width={350}
-                  height={280}
-                />
-            </div>
-          ))}
-        </section>
-  )
-}
+    <>
+      <h1 className={styles.productDetailsH1}>Détails produit</h1>
+      <section
+        key={productDetails._id}
+        className={styles.sectionProductDetails}
+      >
+        <div>
+          <h2>{productDetails.title}</h2>
+          <Image
+            src={productDetails.image}
+            alt="Détails produits"
+            width={350}
+            height={280}
+          />
+        </div>
+        <div>
+          <p>{productDetails.description}</p>
+          <p>{productDetails.price} {productDetails.currency}</p>
+        </div>
+      </section>
+    </>
+  );
+};
 
-export default productDetails
+export default productDetails;

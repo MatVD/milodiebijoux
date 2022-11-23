@@ -14,11 +14,7 @@ export interface Products {
   _type: string,
   price: number,
   currency: string,
-  image: {
-    asset: {
-      _ref: string
-    }
-  },
+  image: string,
   slug: {
     current: string
   },
