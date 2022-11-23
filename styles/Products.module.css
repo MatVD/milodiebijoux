@@ -16,5 +16,6 @@
 
 .wrapperProducts img:hover {
   transform: scale(104%);
+  transition: transform 0.3s ease;
   overflow: hidden;
 }

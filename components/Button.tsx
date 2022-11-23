@@ -2,10 +2,18 @@ import Link from "next/link";
 import React from "react";
 import styles from "../styles/Button.module.css";
 
-const Button = () => {
+type Props = {
+  label: string,
+  path: string,
+}
+
+const Button = ({label, path}: Props) => {
+
   return (
-    <Link href="/products/boucles">
-      <div className={styles.button}>Acheter maintenant</div>
+    <Link href={`${path}`}>
+      <div className={styles.button}>
+        {label}
+      </div>
     </Link>
   );
 };

@@ -4,6 +4,8 @@ import React from "react";
 import client from "../../../client/client";
 import { Products } from "../../../typings";
 import styles from "../../../styles/ProductDetails.module.css";
+import Button from "../../../components/Button";
+
 
 // This function gets called at build time
 export async function getStaticPaths() {
@@ -23,7 +25,10 @@ export async function getStaticPaths() {
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: "blocking" };
+  return { 
+    paths, 
+    fallback: "blocking" 
+  };
 }
 
 // This also gets called at build time
@@ -78,6 +83,7 @@ const productDetails = ({ productDetails }: Props) => {
         <div>
           <p>{productDetails.description}</p>
           <p>{productDetails.price} {productDetails.currency}</p>
+          {/* <Button label="Ajouter au panier" /> */}
         </div>
       </section>
     </>

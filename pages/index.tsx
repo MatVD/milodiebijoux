@@ -18,7 +18,6 @@ export async function getStaticProps() {
     "image": image.asset->url,
   }`);
 
-
   const imagesBanner = await client.fetch(`*[_type == "imageBanner"]{
     title,
     "id": _id,
@@ -31,13 +30,12 @@ export async function getStaticProps() {
   return {
     props: {
       categories,
-      imagesBanner
+      imagesBanner,
     },
   };
 }
 
 export default function Home({ categories, imagesBanner }: any) {
-
   return (
     <>
       <Head>
@@ -47,7 +45,7 @@ export default function Home({ categories, imagesBanner }: any) {
           content="Milodie Bijoux - creation de bijoux"
         />
       </Head>
-      <>
+      <div>
         <section className={homeStyles.banner}>
           <Image
             className={homeStyles.imagesProductsBanner}
@@ -66,7 +64,7 @@ export default function Home({ categories, imagesBanner }: any) {
               Boucles d&apos;oreilles - Colliers - Bagues
             </h1>
             <h2>Parce que vous le valez bien !</h2>
-            <Button />
+            <Button label="Acheter maintenant" path={"products/boucles"} />
           </div>
         </div>
         <hr className={homeStyles.hr} />
@@ -91,7 +89,7 @@ export default function Home({ categories, imagesBanner }: any) {
         <section className={homeStyles.sectionLivraison}>
           <h2>Livraison</h2>
           <p>Offerte pour une commande de plus de 10000€</p>
-          <Button />
+          <Button label="Acheter maintenant" path={"products/boucles"} />
         </section>
 
         <section>
@@ -100,18 +98,20 @@ export default function Home({ categories, imagesBanner }: any) {
             <div className={homeStyles.avis1}>
               <div className={homeStyles.initialCircle}>MV</div>
               <p className={homeStyles.initialText}>
-                Ces bijoux sont magnifique ! Un coups de coeur pour les oeuves de cette créatrice
+                Ces bijoux sont magnifique ! Un coups de coeur pour les oeuves
+                de cette créatrice
               </p>
             </div>
             <div className={homeStyles.avis2}>
               <div className={homeStyles.initialCircle}>MV</div>
               <p className={homeStyles.initialText}>
-                Ces bijoux sont magnifique ! Un coups de coeur pour les oeuves de cette créatrice
+                Ces bijoux sont magnifique ! Un coups de coeur pour les oeuves
+                de cette créatrice
               </p>
             </div>
           </div>
         </section>
-      </>
+      </div>
     </>
   );
 }

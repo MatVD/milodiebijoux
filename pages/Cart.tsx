@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import Link from "next/link";
 import {
   AiOutlineShopping,
   AiOutlineMinus,
@@ -10,51 +9,47 @@ import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import styles from "../styles/Cart.module.css"
+import Button from "../components/Button";
 
 function Cart() {
-  const router= useRouter()
+  const router = useRouter()
   const redirect = () => {
     router.push('/')
   }
 
   return (
-    <div className="cart-wrapper">
-      <div className="cart-container">
+    <div className={styles.cartWrapper} onClick={() => redirect()}>
+      <div className={styles.cartContainer}>
         <button
           type="button"
-          className="cart-heading"
+          className={styles.cartHeading}
           onClick={() => redirect()}
         >
           <AiOutlineLeft />
-          <span className="headind">Your cart:</span>
-          <span className="cart-num-items"> 0 items</span>
+          <span className={styles.headind}>Panier:</span>
+          <span className={styles.cartNumItems}> 0 items</span>
         </button>
 
         {0 < 1 && (
-          <div className="empty-cart">
-            <AiOutlineShopping size={150} />
-            <h3>Your shopping cart is empty</h3>
-            <Link href="/">
-              <button
-                type="button"
-                className="btn"
-                onClick={() => redirect()}
-              >
-                Continue shopping
-              </button>
-            </Link>
+          <div className={styles.emptyCart}>
+            <AiOutlineShopping size={120} />
+            <h3>Votre panier est vide</h3>
+            <br /><br /><br />
+            <Button label={'Continuer mes achats'} path={'/'}/>
           </div>
         )}
 
-        <div className="product-container">
-          {1>= 1 && (
-              <div className="product">
+        <div className={styles.productContainer}>
+          {0 >= 1 && (
+              <div className={styles.product}>
                 <Image
-                  src={'#'}
+                  src={'https://cdn.sanity.io/images/i5ilgqfl/production/69173b1b2dcf9714836781a9c22174dfb3093e6c-779x694.png?w=2000&fit=max&auto=format'}
                   alt="Image du panier"
-                  className="cart-product-image"
+                  className={styles.cartProductImage}
+                  fill
                 />
-                <div className="item-desc">
+                <div className={styles.itemDesc}>
                   <div className="flex top">
                     <h5>item.name</h5>
                     <h4>item.price€</h4>
@@ -80,7 +75,7 @@ function Cart() {
                     </div>
                     <button
                       type="button"
-                      className="remove-item"
+                      className={styles.removeItem}
                       onClick={() => console.log('Enlevé')}
                     >
                       <TiDeleteOutline />
@@ -90,20 +85,14 @@ function Cart() {
               </div>
             )}
           <div>
-            {1 >= 0 && (
-              <div className="cart-bottom">
-                <div className="total">
+            {0 >= 1 && (
+              <div className={styles.cartBottom}>
+                <div className={styles.total}>
                   <h3>Subtotal: </h3>
                   <h3>totalPrice€</h3>
                 </div>
-                <div className="btn-container">
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => console.log('Presque payé')}
-                  >
-                    Payment
-                  </button>
+                <div className={styles.btnContainer}>
+                <Button label={'Paiement'} path={'/'}/>
                 </div>
               </div>
             )}
