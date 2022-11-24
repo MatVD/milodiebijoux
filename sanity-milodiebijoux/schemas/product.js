@@ -1,39 +1,39 @@
 export default {
-  name: 'product',
-  title: 'Produit',
-  type: 'document',
+  name: "product",
+  title: "Produit",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Titre',
-      type: 'string',
+      name: "title",
+      title: "Titre",
+      type: "string",
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96,
       },
     },
     {
-      title: 'Tags',
-      name: 'tags',
-      type: 'array',
+      title: "Tags",
+      name: "tags",
+      type: "array",
       of: [
         {
-          type: 'string',
+          type: "string",
         },
       ],
       options: {
-        layout: 'tags',
+        layout: "tags",
       },
     },
     {
-      name: 'body',
-      title: 'Description',
-      type: 'localeBlockContent',
+      name: "body",
+      title: "Description",
+      type: "localeBlockContent",
     },
     {
       name: "price",
@@ -46,23 +46,28 @@ export default {
       type: "string",
     },
     {
-      title: 'Image',
-      name: 'image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      }
-    },
-    {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
+      title: "Images",
+      name: "images",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: {type: 'category'},
+          type: "image",
+        },
+      ],
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "category" },
         },
       ],
     },
   ],
-}
+};

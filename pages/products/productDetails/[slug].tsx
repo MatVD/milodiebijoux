@@ -1,13 +1,13 @@
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useContext } from "react";
 import client from "../../../client/client";
 import { Products } from "../../../typings";
 import styles from "../../../styles/ProductDetails.module.css";
 import Button from "../../../components/Button";
+import { useStateContext } from "../../../context/context";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-
-// This function gets called at build time
 export async function getStaticPaths() {
   const productsDetails = await client.fetch(`*[_type == "product" ]{
     title,
@@ -16,25 +16,14 @@ export async function getStaticPaths() {
     }
   }`);
 
-  // Get the paths we want to pre-render based on product
   const paths = productsDetails.map((productDetails: Products) => ({
-    params: {
-      slug: productDetails.slug.current,
-    },
+    params: { slug: productDetails.slug.current },
   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { 
-    paths, 
-    fallback: "blocking" 
-  };
+  return { paths, fallback: "blocking" };
 }
 
-// This also gets called at build time
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // params contains the post `id`.
-  // If the route is like /posts/1, then params.id is 1
   const query = `*[_type == "product" && slug.current == $slug][0]{
     title,
     _id,
@@ -43,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     slug {
       current
     },
-    "image": image.asset->url,
+    "images": images[].asset->url,
     "description": body.fr[0].children[1].text
   }`;
 
@@ -51,10 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     slug: params?.slug,
   });
 
-  // Pass post data to the page via props
-  return {
-    props: { productDetails },
-  };
+  return { props: { productDetails } };
 };
 
 interface Props {
@@ -62,7 +48,8 @@ interface Props {
 }
 
 const productDetails = ({ productDetails }: Props) => {
-  console.log(productDetails);
+  const [index, setIndex] = useState(0);
+  const { onAdd, qty, incQty, decQty } = useStateContext();
 
   return (
     <>
@@ -73,17 +60,51 @@ const productDetails = ({ productDetails }: Props) => {
       >
         <div>
           <h2>{productDetails.title}</h2>
+
           <Image
-            src={productDetails.image}
+            src={productDetails.images && productDetails?.images[index]}
             alt="Détails produits"
             width={350}
             height={280}
           />
+          <div className={styles.smallImagesContainer}>
+            {productDetails.images?.map((image, i) => (
+              <div key={i}>
+                <Image
+                  alt="Autres images du produit"
+                  width={70}
+                  height={70}
+                  src={image}
+                  className={
+                    i === index
+                      ? `${styles.smallImage} ${styles.selectedImage}`
+                      : styles.smallImage
+                  }
+                  onClick={() => setIndex(i)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-        <div>
+        <div className={styles.wrapperProductDetailsInfos}>
+          <h3>Details: </h3>
           <p>{productDetails.description}</p>
-          <p>{productDetails.price} {productDetails.currency}</p>
-          {/* <Button label="Ajouter au panier" /> */}
+          <p>
+            {productDetails.price} {productDetails.currency}
+          </p>
+          <div className={styles.quantity}>
+            <h4>Quantité: </h4>
+            <div className={styles.quantityDesc}>
+              <span className={styles.minus} onClick={decQty}>
+                <AiOutlineMinus />
+              </span>
+              <span className={styles.num}>{qty}</span>
+              <span className={styles.plus} onClick={incQty}>
+                <AiOutlinePlus />
+              </span>
+            </div>
+          </div>
+          <Button label="Ajouter au panier" path="/Cart" />
         </div>
       </section>
     </>

@@ -3,25 +3,25 @@
 
 export interface Context {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }
 
 export interface Products {
-  _createdAt: string,
-  title: string,
-  _id: string,
-  _type: string,
-  price: number,
-  currency: string,
-  image: string,
+  _createdAt: string;
+  title: string;
+  _id: string;
+  _type: string;
+  price: number;
+  currency: string;
+  images: [string];
   slug: {
-    current: string
-  },
-  description: string,
+    current: string;
+  };
+  description: string;
   category: [
     {
-      _ref: string
+      _ref: string;
     }
-  ]
+  ];
 }

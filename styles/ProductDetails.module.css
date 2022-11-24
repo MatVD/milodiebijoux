@@ -1,24 +1,72 @@
 .productDetailsH1,
 .sectionProductDetails h2 {
-    text-align: center;
+  text-align: center;
 }
 
 .sectionProductDetails {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .sectionProductDetails img {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .sectionProductDetails img,
-.sectionProductDetails p {
-    margin: 10px;
+.wrapperProductDetailsInfos {
+  margin-left: 15px;
+}
+
+/* Product quantity */
+.quantity {
+  width: 550px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.quantityDesc {
+  border: 1px solid gray;
+  padding: 6px;
+  margin-left: 10px;
+}
+.quantityDesc span {
+  font-size: 16px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.quantityDesc .minus {
+  border-right: 1px solid gray;
+  color: #f02d34;
+}
+.quantityDesc .num {
+  border-right: 1px solid gray;
+  font-size: 20px;
+}
+.quantityDesc .plus {
+  color: rgb(49, 168, 49);
+}
+.smallImagesContainer {
+  display: flex;
+}
+
+.smallImage:hover {
+  transform: scale(105%);
+  cursor: pointer;
+}
+
+.selectedImage {
+  border: 4px solid #8d3998;
+}
+
+@media (max-width: 976px) {
+  .sectionProductDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

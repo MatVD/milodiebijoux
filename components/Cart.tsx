@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "../styles/Cart.module.css"
-import Button from "../components/Button";
+import Button from "./Button";
 
 function Cart() {
   const router = useRouter()

@@ -14,7 +14,7 @@ export const getStaticProps = async (context: Context) => {
     slug {
       current
     },
-    "images": image.asset->url
+    "images": images[].asset->url,
   }`);
 
   if (!products) {
@@ -45,7 +45,7 @@ const Bracelets = ({ products }: Props) => {
               <h2>{product.title}</h2>
               <Link href={`/products/productDetails/${product.slug.current}`}>
                 <Image
-                  src={product.images}
+                  src={product.images[0]}
                   width={300}
                   height={200}
                   alt="Boucles d'oreilles"
