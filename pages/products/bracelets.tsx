@@ -36,23 +36,26 @@ type Props = {
 
 const Bracelets = ({ products }: Props) => {
   return (
-    <div className={styles.sectionProducts}>
-      {products.map((product: any) => {
-        return (
-          <div key={product._id} className={styles.wrapperProducts}>
-            <h2>{product.title}</h2>
-            <Link href={`/products/productDetails/${product.slug.current}`}>
-              <Image
-                src={product.images}
-                width={300}
-                height={200}
-                alt="Boucles d'oreilles"
-              />
-            </Link>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <h1 style={{ textAlign: "center" }}>Bracelets</h1>
+      <div className={styles.sectionProducts}>
+        {products.map((product: any) => {
+          return (
+            <div key={product._id} className={styles.wrapperProducts}>
+              <h2>{product.title}</h2>
+              <Link href={`/products/productDetails/${product.slug.current}`}>
+                <Image
+                  src={product.images}
+                  width={300}
+                  height={200}
+                  alt="Boucles d'oreilles"
+                />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
