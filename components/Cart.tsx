@@ -7,67 +7,98 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
-import { useRouter } from "next/router";
 import Image from "next/image";
-import styles from "../styles/Cart.module.css"
+import styles from "../styles/Cart.module.css";
 import Button from "./Button";
+import { useStateContext } from "../context/context";
+import { getStripe } from "../lib/getStripe";
 
 function Cart() {
-  const router = useRouter()
-  const redirect = () => {
-    router.push('/')
-  }
+  const cartRef = useRef();
+  const {
+    totalPrice,
+    totalQuantities,
+    cartItems,
+    setShowCart,
+    toggleCartItemQuantity,
+    onRemove,
+  } = useStateContext();
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    toast.loading("Redirection en cours");
+
+    stripe.redirecToCheckout({ sessionId: data.id });
+  };
 
   return (
-    <div className={styles.cartWrapper} onClick={() => redirect()}>
+    <div className={styles.cartWrapper} ref={cartRef}>
       <div className={styles.cartContainer}>
         <button
           type="button"
           className={styles.cartHeading}
-          onClick={() => redirect()}
+          onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
           <span className={styles.headind}>Panier:</span>
-          <span className={styles.cartNumItems}> 0 items</span>
+          <span className={styles.cartNumItems}>{totalQuantities}</span>
         </button>
 
-        {0 < 1 && (
+        {cartItems.length < 1 && (
           <div className={styles.emptyCart}>
             <AiOutlineShopping size={120} />
             <h3>Votre panier est vide</h3>
-            <br /><br /><br />
-            <Button label={'Continuer mes achats'} path={'/'}/>
+            <br />
+            <br />
+            <br />
+            <Button label={"Continuer mes achats"} path={"/"} />
           </div>
         )}
 
         <div className={styles.productContainer}>
-          {0 >= 1 && (
+          {cartItems.length >= 1 &&
+            cartItems.map((item: any, index: number) => {
               <div className={styles.product}>
                 <Image
-                  src={'https://cdn.sanity.io/images/i5ilgqfl/production/69173b1b2dcf9714836781a9c22174dfb3093e6c-779x694.png?w=2000&fit=max&auto=format'}
+                  src={item?.image[0]}
                   alt="Image du panier"
                   className={styles.cartProductImage}
                   fill
                 />
                 <div className={styles.itemDesc}>
-                  <div className="flex top">
-                    <h5>item.name</h5>
-                    <h4>item.price€</h4>
+                  <div className={`${styles.flex} ${styles.top}`}>
+                    <h5>{item.name}</h5>
+                    <h4>{item.price} €</h4>
                   </div>
-                  <div className="flex bottom">
+                  <div className={`${styles.flex} ${styles.bottom}`}>
                     <div>
-                      <p className="quantity-desc">
+                      <p className={styles.quantityDesc}>
                         <span
-                          className="minus"
-                          onClick={() => console.log('1 en moins')}
+                          className={styles.minus}
+                          onClick={() => toggleCartItemQuantity(item._id, "dec")}
                         >
                           <AiOutlineMinus />
                         </span>
-                        <span className="num">item.quantity</span>
+                        <span className={styles.num}>{item.quantity}</span>
                         <span
-                          className="plus"
-                          onClick={() => console.log('1 en plus')
-                          }
+                          className={styles.plus}
+                          onClick={() => toggleCartItemQuantity(item._id, "inc")}
                         >
                           <AiOutlinePlus />
                         </span>
@@ -76,23 +107,26 @@ function Cart() {
                     <button
                       type="button"
                       className={styles.removeItem}
-                      onClick={() => console.log('Enlevé')}
+                      onClick={() => onRemove(item)}
                     >
                       <TiDeleteOutline />
                     </button>
                   </div>
                 </div>
-              </div>
-            )}
+              </div>;
+            })}
+
           <div>
-            {0 >= 1 && (
+            {cartItems.length >= 0 && (
               <div className={styles.cartBottom}>
                 <div className={styles.total}>
                   <h3>Subtotal: </h3>
-                  <h3>totalPrice€</h3>
+                  <h3>{totalPrice} €</h3>
                 </div>
                 <div className={styles.btnContainer}>
-                <Button label={'Paiement'} path={'/'}/>
+                  <button className={styles.btn} onClick={handleCheckout}>
+                    Payement
+                  </button>
                 </div>
               </div>
             )}

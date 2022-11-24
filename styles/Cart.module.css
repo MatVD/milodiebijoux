@@ -99,3 +99,20 @@
   margin: auto;
 }
 
+.btn {
+  position: relative;
+  margin: 20px auto;
+  background-color: #8D3998;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 320px;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: scale(104%);
+  transition: transform 0.5s ease;
+}
