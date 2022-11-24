@@ -37,7 +37,7 @@ type Props = {
 const Boucles = ({ products }: Props) => {
   return (
     <>
-      <h1 style={{textAlign: 'center'}}>Boucles d'oreilles</h1>
+      <h1 style={{textAlign: 'center'}}>Boucles d&apos;oreilles</h1>
       <div className={styles.sectionProducts}>
         {products.map((product: any) => {
           return (

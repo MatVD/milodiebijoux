@@ -47,7 +47,7 @@ interface Props {
   productDetails: Products;
 }
 
-const productDetails = ({ productDetails }: Props) => {
+const ProductDetails = ({ productDetails }: Props) => {
   const [index, setIndex] = useState(0);
   const { onAdd, qty, incQty, decQty } = useStateContext();
 
@@ -111,4 +111,4 @@ const productDetails = ({ productDetails }: Props) => {
   );
 };
 
-export default productDetails;
+export default ProductDetails;
