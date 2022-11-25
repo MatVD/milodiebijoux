@@ -14,7 +14,7 @@ import { useStateContext } from "../context/context";
 import getStripe from "../lib/getStripe";
 
 function Cart() {
-  const cartRef = useRef();
+  const cartRef = useRef(null);
   const {
     totalPrice,
     totalQuantities,
@@ -27,7 +27,7 @@ function Cart() {
   const handleCheckout = async () => {
     const stripe = await getStripe();
 
-    const response = await fetch("/api/stripe", {
+    const response = await fetch("/api/checkout_sessions", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
@@ -38,13 +38,13 @@ function Cart() {
       body: JSON.stringify(cartItems),
     });
 
-    if (response.statusCode === 500) return;
+    if (response.status === 500) return;
 
     const data = await response.json();
 
     toast.loading("Redirection en cours");
 
-    stripe.redirecToCheckout({ sessionId: data.id });
+    stripe?.redirectToCheckout({ sessionId: data.id });
   };
 
   return (
