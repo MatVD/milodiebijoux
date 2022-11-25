@@ -89,7 +89,7 @@ const ProductDetails = ({ productDetails }: Props) => {
         <div className={styles.wrapperProductDetailsInfos}>
           <h3>Details: </h3>
           <p>{productDetails.description}</p>
-          <p>
+          <p className={styles.price}>
             {productDetails.price} {productDetails.currency}
           </p>
           <div className={styles.quantity}>
