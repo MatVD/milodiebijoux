@@ -25,7 +25,13 @@
   width: 180px;
 }
 
-.cart,
+.cartIcon {
+  background: none;
+  margin: 16px;
+  border: none;
+  cursor: pointer;
+}
+
 .logo {
   margin: 16px;
   object-fit: contain;
@@ -107,7 +113,6 @@
   .searchBar {
     display: none;
   }
-  .cart,
   .logo {
     margin: 8px 16px;
     object-fit: contain;

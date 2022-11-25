@@ -48,7 +48,7 @@ function Cart() {
   };
 
   return (
-    <div className={styles.cartWrapper} ref={cartRef}>
+    <div className={styles.cartWrapper} ref={cartRef} onClick={() => setShowCart(false)}>
       <div className={styles.cartContainer}>
         <button
           type="button"
@@ -76,7 +76,7 @@ function Cart() {
             cartItems.map((item: any, index: number) => {
               <div className={styles.product}>
                 <Image
-                  src={item?.image[0]}
+                  src={item?.image[index]}
                   alt="Image du panier"
                   className={styles.cartProductImage}
                   fill

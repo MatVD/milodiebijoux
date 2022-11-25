@@ -116,3 +116,15 @@
   transform: scale(104%);
   transition: transform 0.5s ease;
 }
+
+@media (max-width: 976px) {
+  .cartWrapper {
+    width: 100%;
+  }
+  .cartContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

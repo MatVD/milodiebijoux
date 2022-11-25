@@ -1,6 +1,5 @@
 import Head from "next/head";
 import client from "../client/client";
-import styles from "../styles/Products.module.css";
 import Image from "next/image";
 import homeStyles from "../styles/Home.module.css";
 import Logo from "../public/Logo.png";
@@ -56,9 +55,7 @@ export default function Home({ categories, imagesBanner }: any) {
           />
         </section>
         <div className={homeStyles.wrapperImageAndCTA}>
-          <div>
-            <Image src={Logo} alt="Big logo" width={200} />
-          </div>
+          <Image src={Logo} alt="Big logo" width={200} />
           <div className={homeStyles.wrapperCTA}>
             <h1 className={homeStyles.h1}>
               Boucles d&apos;oreilles - Colliers - Bagues

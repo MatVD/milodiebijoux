@@ -3,15 +3,21 @@ import Link from "next/link";
 import React from "react";
 import Logo from "../public/Logo.png";
 import styles from "../styles/Header.module.css";
-import Cart from "../public/shopping-bag.png";
+import cart from "../public/shopping-bag.png";
+import Cart from "./Cart";
 import Loop from "../public/search.png";
 import { useState } from "react";
+import { useStateContext } from "../context/context";
 
 const Header = () => {
   const [checked, setChecked] = useState(false);
+  const { showCart, setShowCart, totalQuantities } = useStateContext();
 
   return (
-    <div className={styles.wrapperHeader} onClick={() => (checked ? setChecked(!checked) : null)}>
+    <div
+      className={styles.wrapperHeader}
+      onClick={() => (checked ? setChecked(!checked) : null)}
+    >
       <header
         className={styles.header}
         onClick={() => (checked ? setChecked(!checked) : null)}
@@ -79,15 +85,16 @@ const Header = () => {
             />
             <input className={styles.searchBar} type="text" />
           </div>
-          <Link href="/Cart">
+          <button className={styles.cartIcon} onClick={() => setShowCart(true)}>
             <Image
               className={styles.cart}
-              src={Cart}
+              src={cart}
               priority={true}
               alt="Panier"
               width={35}
             />
-          </Link>
+          </button>
+          {showCart && <Cart />}
         </div>
       </header>
     </div>

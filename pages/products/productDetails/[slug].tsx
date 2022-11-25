@@ -7,6 +7,7 @@ import styles from "../../../styles/ProductDetails.module.css";
 import Button from "../../../components/Button";
 import { useStateContext } from "../../../context/context";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import Cart from "../../../components/Cart";
 
 export async function getStaticPaths() {
   const productsDetails = await client.fetch(`*[_type == "product" ]{
@@ -49,7 +50,7 @@ interface Props {
 
 const ProductDetails = ({ productDetails }: Props) => {
   const [index, setIndex] = useState(0);
-  const { onAdd, qty, incQty, decQty } = useStateContext();
+  const { onAdd, qty, incQty, decQty, setShowCart, showCart } = useStateContext();
 
   return (
     <>
@@ -104,7 +105,15 @@ const ProductDetails = ({ productDetails }: Props) => {
               </span>
             </div>
           </div>
-          <Button label="Ajouter au panier" path="/Cart" />
+          <button type="button" onClick={() => onAdd(productDetails, qty)}>
+                  Ajouter au panier
+          </button>
+          <button type="button" onClick={() => setShowCart(true)}>
+                  Voir le panier
+          </button>
+          {
+            showCart && <Cart/>
+          }
         </div>
       </section>
     </>
