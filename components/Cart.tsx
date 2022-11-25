@@ -11,7 +11,7 @@ import Image from "next/image";
 import styles from "../styles/Cart.module.css";
 import Button from "./Button";
 import { useStateContext } from "../context/context";
-import { getStripe } from "../lib/getStripe";
+import getStripe from "../lib/getStripe";
 
 function Cart() {
   const cartRef = useRef();
