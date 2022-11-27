@@ -84,7 +84,7 @@ function Cart() {
                 return (
                   <div className={styles.product} key={index}>
                     <Image
-                      src={item?.images[index]}
+                      src={item?.images[0]}
                       alt={`Image ${item.title}`}
                       className={styles.cartProductImage}
                       width={75}
