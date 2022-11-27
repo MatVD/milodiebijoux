@@ -5,6 +5,7 @@ import homeStyles from "../styles/Home.module.css";
 import Logo from "../public/Logo.png";
 import Button from "../components/Button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 // getStaticProps => fetch data from sanity
 export async function getStaticProps() {
@@ -35,6 +36,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ categories, imagesBanner }: any) {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -51,7 +54,6 @@ export default function Home({ categories, imagesBanner }: any) {
             src={imagesBanner[0].image}
             alt="zefhvzloi"
             fill
-            priority
           />
         </section>
         <div className={homeStyles.wrapperImageAndCTA}>
@@ -61,7 +63,7 @@ export default function Home({ categories, imagesBanner }: any) {
               Boucles d&apos;oreilles - Colliers - Bagues
             </h1>
             <h2>Parce que vous le valez bien !</h2>
-            <Button label="Acheter maintenant" path={"products/boucles"} />
+            <Button label={"Continuer mes achats"} onClick={() => router.push('products/boucles')} />
           </div>
         </div>
         <hr className={homeStyles.hr} />
@@ -86,7 +88,7 @@ export default function Home({ categories, imagesBanner }: any) {
         <section className={homeStyles.sectionLivraison}>
           <h2>Livraison</h2>
           <p>Offerte pour une commande de plus de 10000€</p>
-          <Button label="Acheter maintenant" path={"products/boucles"} />
+          <Button label={"Continuer mes achats"} onClick={() => router.push('products/boucles')} />
         </section>
 
         <section>

@@ -1,20 +1,18 @@
 import Link from "next/link";
-import React from "react";
+import React, { AnchorHTMLAttributes, MouseEventHandler } from "react";
 import styles from "../styles/Button.module.css";
 
 type Props = {
   label: string,
-  path: string,
+  onClick: any
 }
 
-const Button = ({label, path}: Props) => {
+const Button = ({label, onClick}: Props) => {
 
   return (
-    <Link href={`${path}`}>
-      <div className={styles.button}>
+      <div className={styles.button} onClick={onClick}>
         {label}
       </div>
-    </Link>
   );
 };
 

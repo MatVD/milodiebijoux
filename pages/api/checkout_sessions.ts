@@ -1,26 +1,29 @@
-import { type } from "os";
 import Stripe from "stripe";
+import { NextApiRequest, NextApiResponse } from "next";
+import { Products } from "../../typings";
+import { type } from "os";
 
-const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2022-11-15",
 });
 
-
-export default async function handler({ req, res }: any) {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
-    console.log(req.body);
     try {
       // Create Checkout Sessions from body params.
-      const params = <any>{
+
+
+      const params: any = {
         submit_type: "pay",
         mode: "payment",
         payment_method_types: ["card"],
         billing_address_collection: "auto",
         shipping_options: [
           { shipping_rate: "shr_1M7xMIDHFDELFjfNokXjiy7O" },
+          { shipping_rate: "shr_1M8gBfDHFDELFjfN3bXRltWG" },
         ],
-        line_items: req.body.map((item: any) => {
-          const img = item.image[0].asset._ref;
+        line_items: req.body.map((item: Products) => {
+          const img = item.images[0];
           const newImage = img
             .replace(
               "image-",
@@ -32,7 +35,7 @@ export default async function handler({ req, res }: any) {
             price_data: {
               currency: "eur",
               product_data: {
-                name: item.name,
+                name: item.title,
                 images: [newImage],
               },
               unit_amount: item.price * 100,
@@ -56,4 +59,4 @@ export default async function handler({ req, res }: any) {
     res.setHeader("Allow", "POST");
     res.status(405).end("Method Not Allowed");
   }
-}
+};

@@ -25,19 +25,19 @@ function Cart() {
     onRemove,
   } = useStateContext();
 
-  const handleCheckout = async () => {
+  const handleCheckout = async (event: React.MouseEvent) => {
     const stripe = await getStripe();
 
+    
     const response = await fetch("/api/checkout_sessions", {
       method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(cartItems),
     });
+    
+    
 
     if (response.status === 500) return;
 
@@ -74,12 +74,11 @@ function Cart() {
               <br />
               <br />
               <br />
-              <Button label={"Continuer mes achats"} path={"/"} />
+              <Button label={"Continuer mes achats"} onClick={() => setShowCart(false)} />
             </div>
           )}
 
           <div className={styles.productContainer}>
-            {console.log(cartItems)}
             {cartItems.length >= 1 &&
               cartItems.map((item: Products, index: number) => {
                 return (
