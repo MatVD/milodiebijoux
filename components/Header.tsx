@@ -93,6 +93,9 @@ const Header = () => {
               alt="Panier"
               width={35}
             />
+            {totalQuantities >= 1 && (
+              <span className={styles.cartItemQty}>{totalQuantities}</span>
+            )}
           </button>
           {showCart && <Cart />}
         </div>

@@ -33,6 +33,19 @@
   cursor: pointer;
 }
 
+.cartItemQty{
+  position: absolute;
+  right: 12px;
+  font-size: 15px;
+  color: #eee;
+  background-color: #f02d34;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 600;
+}
+
 .logo {
   margin: 16px;
   object-fit: contain;
