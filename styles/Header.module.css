@@ -28,6 +28,7 @@
 .cartIcon {
   background: none;
   margin: 16px;
+  padding: 0;
   border: none;
   cursor: pointer;
 }
@@ -114,6 +115,7 @@
     display: none;
   }
   .logo {
+    padding: 0;
     margin: 8px 16px;
     object-fit: contain;
   }

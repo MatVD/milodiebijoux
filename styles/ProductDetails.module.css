@@ -13,17 +13,26 @@
   align-items: center;
 }
 
-.sectionProductDetails img {
-  border-radius: 5px;
+.smallImagesContainer {
+  display: flex;
 }
 
-.sectionProductDetails img,
+.smallImage {
+  border-radius: 5px;
+  margin: 10px 10px 10px 0;
+}
+
+.smallImage:hover {
+  transform: scale(105%);
+  cursor: pointer;
+}
+
+.selectedImage {
+  border: 3px solid #8d3998;
+}
+
 .wrapperProductDetailsInfos {
   margin-left: 15px;
-}
-
-.wrapperProductDetailsInfos {
-  width: 100%;
 }
 
 .price {
@@ -57,18 +66,6 @@
 }
 .quantityDesc .plus {
   color: rgb(49, 168, 49);
-}
-.smallImagesContainer {
-  display: flex;
-}
-
-.smallImage:hover {
-  transform: scale(105%);
-  cursor: pointer;
-}
-
-.selectedImage {
-  border: 4px solid #8d3998;
 }
 
 @media (max-width: 976px) {

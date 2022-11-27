@@ -50,8 +50,8 @@ interface Props {
 
 const ProductDetails = ({ productDetails }: Props) => {
   const [index, setIndex] = useState(0);
-  const { onAdd, qty, incQty, decQty, setShowCart, showCart, setCartItems } = useStateContext();
-
+  const { onAdd, qty, incQty, decQty, setShowCart, showCart, setCartItems } =
+    useStateContext();
 
   return (
     <>
@@ -60,7 +60,7 @@ const ProductDetails = ({ productDetails }: Props) => {
         key={productDetails._id}
         className={styles.sectionProductDetails}
       >
-        <div>
+        <div className={styles.wrapperImages}>
           <h2>{productDetails.title}</h2>
 
           <Image
@@ -71,20 +71,19 @@ const ProductDetails = ({ productDetails }: Props) => {
           />
           <div className={styles.smallImagesContainer}>
             {productDetails.images?.map((image, i) => (
-              <div key={i}>
-                <Image
-                  alt="Autres images du produit"
-                  width={70}
-                  height={70}
-                  src={image}
-                  className={
-                    i === index
-                      ? `${styles.smallImage} ${styles.selectedImage}`
-                      : styles.smallImage
-                  }
-                  onClick={() => setIndex(i)}
-                />
-              </div>
+              <Image
+                key={i}
+                alt="Autres images du produit"
+                width={70}
+                height={70}
+                src={image}
+                className={
+                  i === index
+                    ? `${styles.smallImage} ${styles.selectedImage}`
+                    : styles.smallImage
+                }
+                onClick={() => setIndex(i)}
+              />
             ))}
           </div>
         </div>
@@ -106,15 +105,12 @@ const ProductDetails = ({ productDetails }: Props) => {
               </span>
             </div>
           </div>
-          <button type="button" onClick={() => onAdd(productDetails!, qty)}>
-                  Ajouter au panier
-          </button>
-          <button type="button" onClick={() => setShowCart(true)}>
-                  Voir le panier
-          </button>
-          {
-            showCart && <Cart/>
-          }
+          <Button
+            label={"Ajouter"}
+            onClick={() => onAdd(productDetails!, qty)}
+          />
+          <Button label={"Voir le panier"} onClick={() => setShowCart(true)} />
+          {showCart && <Cart />}
         </div>
       </section>
     </>

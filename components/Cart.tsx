@@ -92,11 +92,11 @@ function Cart() {
                     />
                     <div className={styles.itemDesc}>
                       <div className={`${styles.flex} ${styles.top}`}>
-                        <h5>{item.title} </h5>
-                        <h4>{item.price} €</h4>
+                        <h4>{item.title}</h4>
+                        <h5>{item.price} € </h5>
                       </div>
                       <div className={`${styles.flex} ${styles.bottom}`}>
-                        <div>
+                        <>
                           <p className={styles.quantityDesc}>
                             <span
                               className={styles.minus}
@@ -116,7 +116,7 @@ function Cart() {
                               <AiOutlinePlus />
                             </span>
                           </p>
-                        </div>
+                        </>
                         <button
                           type="button"
                           className={styles.removeItem}
@@ -130,12 +130,12 @@ function Cart() {
                 );
               })}
 
-            <div>
+            <>
               {cartItems.length >= 1 && (
                 <div className={styles.cartBottom}>
                   <div className={styles.total}>
-                    <h3>Subtotal: </h3>
-                    <h3>{totalPrice} €</h3>
+                    <h5>Total panier : </h5>
+                    <h5>{totalPrice} €</h5>
                   </div>
                   <div className={styles.btnContainer}>
                     <button className={styles.btn} onClick={handleCheckout}>
@@ -144,7 +144,7 @@ function Cart() {
                   </div>
                 </div>
               )}
-            </div>
+            </>
           </div>
         </div>
       </div>
