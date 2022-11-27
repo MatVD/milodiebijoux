@@ -24,4 +24,5 @@ export interface Products {
       _ref: string;
     }
   ];
+  quantity: number;
 }

@@ -50,7 +50,8 @@ interface Props {
 
 const ProductDetails = ({ productDetails }: Props) => {
   const [index, setIndex] = useState(0);
-  const { onAdd, qty, incQty, decQty, setShowCart, showCart } = useStateContext();
+  const { onAdd, qty, incQty, decQty, setShowCart, showCart, setCartItems } = useStateContext();
+
 
   return (
     <>
@@ -105,7 +106,7 @@ const ProductDetails = ({ productDetails }: Props) => {
               </span>
             </div>
           </div>
-          <button type="button" onClick={() => onAdd(productDetails, qty)}>
+          <button type="button" onClick={() => onAdd(productDetails!, qty)}>
                   Ajouter au panier
           </button>
           <button type="button" onClick={() => setShowCart(true)}>

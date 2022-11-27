@@ -1,12 +1,21 @@
-.cartWrapper {
+/* Cet div est présente afin de pouvoir sortir 
+du panier en cliquant en dehors */
+.cartOverlay {
   width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  right: 0;
+  top: 0;
+  /* will-change: transform; */
+  transition: all 1s ease-in-out;
+}
+
+.cartWrapper {
   position: fixed;
   right: 0;
   top: 0;
   z-index: 100;
-  /* will-change: transform; */
-  transition: all 1s ease-in-out;
 }
 .cartContainer {
   height: 100vh;
@@ -63,7 +72,7 @@
 .itemDesc .flex {
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 300px;
   color: #324d67;
 }
 .flex h5 {
@@ -79,6 +88,28 @@
 .total h3 {
   font-size: 22px;
 }
+.quantityDesc {
+  border: 1px solid gray;
+  padding: 6px;
+  margin-left: 10px;
+}
+.quantityDesc span {
+  font-size: 16px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.quantityDesc .minus {
+  border-right: 1px solid gray;
+  color: #f02d34;
+}
+.quantityDesc .num {
+  border-right: 1px solid gray;
+  font-size: 20px;
+}
+.quantityDesc .plus {
+  color: rgb(49, 168, 49);
+}
+
 .removeItem {
   font-size: 24px;
   color: #f02d34;
@@ -102,7 +133,7 @@
 .btn {
   position: relative;
   margin: 20px auto;
-  background-color: #8D3998;
+  background-color: #8d3998;
   color: white;
   padding: 10px;
   border-radius: 5px;

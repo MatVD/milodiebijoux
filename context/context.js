@@ -18,6 +18,7 @@ export const StateContext = ({ children }) => {
       (item) => item._id === product._id
     );
 
+
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
@@ -35,10 +36,10 @@ export const StateContext = ({ children }) => {
     } else {
       product.quantity = quantity;
 
-      setCartItems([...cartItems, { ...product }]);
+      setCartItems([...cartItems, {...product}]);
     }
     
-    toast.success(`${qty} ${product.name} added to the cart.`);
+    toast.success(`${qty} ${product.title} ajouté au panier.`);
   };
 
   const onRemove = (product) => {
