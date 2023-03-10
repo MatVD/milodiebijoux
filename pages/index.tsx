@@ -56,37 +56,37 @@ export default function Home({ categories, imagesBanner }: any) {
             <h2 className={homeStyles.h2}>Parce que vous le valez bien !</h2>
             {/* <Button label={"Voir mes créations"} onClick={() => router.push('products/boucles')} /> */}
           </div>
-          <div className={homeStyles.imagesCaroussel}>
+          <div className={homeStyles.wrapperImagesCaroussel}>
             <Image
-              className={homeStyles.imagesProductsBanner}
+              className={homeStyles.imagesProductsBanner1}
               src={imagesBanner[0].image}
               alt="zefhvzloi"
               width={75}
               height={75}
             />
             <Image
-              className={homeStyles.imagesProductsBanner}
+              className={homeStyles.imagesProductsBanner2}
               src={imagesBanner[1].image}
               alt="zefhvzloi"
               width={150}
               height={150}
             />
             <Image
-              className={homeStyles.imagesProductsBanner}
+              className={homeStyles.imagesProductsBanner3}
               src={imagesBanner[0].image}
               alt="zefhvzloi"
               width={300}
               height={300}
             />
             <Image
-              className={homeStyles.imagesProductsBanner}
+              className={homeStyles.imagesProductsBanner4}
               src={imagesBanner[2].image}
               alt="zefhvzloi"
               width={150}
               height={150}
             />
             <Image
-              className={homeStyles.imagesProductsBanner}
+              className={homeStyles.imagesProductsBanner5}
               src={imagesBanner[2].image}
               alt="zefhvzloi"
               width={75}
