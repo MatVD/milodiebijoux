@@ -4,6 +4,17 @@
   align-items: center;
 }
 
+.background {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #53b1ebac, #e2eff9ef, #f8fcff30), url('../public/Éclaboussures_.png') no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .searchAndCart,
 .logoAndNav {
   display: flex;
@@ -11,18 +22,30 @@
   align-items: center;
 }
 
-
 .loop {
   position: relative;
-  left: -5px;
-  top: 4px;
+  left: 2px;
+  top: 2px;
+  background: white;
+  margin-right: 5px;
 }
 
 .searchBar {
-  border: 1px solid #91caed;
-  border-radius: 5px;
-  padding: 8px 0;
+  padding: 6px 0;
   width: 180px;
+  border: 1px solid white;
+  border-radius: 0 5px 5px 0;
+}
+
+.searchBar:focus {
+  outline: none;
+}
+
+.searchAndCartWrapper {
+  display: flex;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid #91caed;
 }
 
 .cartIcon {
@@ -33,7 +56,7 @@
   cursor: pointer;
 }
 
-.cartItemQty{
+.cartItemQty {
   position: absolute;
   right: 12px;
   font-size: 15px;
@@ -49,6 +72,7 @@
 .logo {
   margin: 16px;
   object-fit: contain;
+  border-radius: 50%;
 }
 
 .navul {
@@ -59,7 +83,7 @@
   z-index: 15;
 }
 
-.navli a{
+.navli a {
   padding: 5px 0;
 }
 

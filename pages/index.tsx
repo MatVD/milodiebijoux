@@ -48,23 +48,21 @@ export default function Home({ categories, imagesBanner }: any) {
         />
       </Head>
       <div>
-        <section className={homeStyles.banner}>
-          <Image
-            className={homeStyles.imagesProductsBanner}
-            src={imagesBanner[0].image}
-            alt="zefhvzloi"
-            fill
-          />
-        </section>
         <div className={homeStyles.wrapperImageAndCTA}>
-          <Image src={Logo} alt="Big logo" width={200} />
           <div className={homeStyles.wrapperCTA}>
             <h1 className={homeStyles.h1}>
               Boucles d&apos;oreilles - Colliers - Bagues
             </h1>
             <h2>Parce que vous le valez bien !</h2>
-            <Button label={"Continuer mes achats"} onClick={() => router.push('products/boucles')} />
+            {/* <Button label={"Voir mes créations"} onClick={() => router.push('products/boucles')} /> */}
           </div>
+          <Image
+            className={homeStyles.imagesProductsBanner}
+            src={imagesBanner[0].image}
+            alt="zefhvzloi"
+            width={300}
+            height={300}
+          />
         </div>
         <hr className={homeStyles.hr} />
 
@@ -88,7 +86,7 @@ export default function Home({ categories, imagesBanner }: any) {
         <section className={homeStyles.sectionLivraison}>
           <h2>Livraison</h2>
           <p>Offerte pour une commande de plus de 10000€</p>
-          <Button label={"Continuer mes achats"} onClick={() => router.push('products/boucles')} />
+          <Button label={"Acheter"} onClick={() => router.push('products/boucles')} />
         </section>
 
         <section>
@@ -111,6 +109,7 @@ export default function Home({ categories, imagesBanner }: any) {
           </div>
         </section>
       </div>
+      <div className={homeStyles.backgroundFooter}></div>
     </>
   );
 }

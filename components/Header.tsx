@@ -14,6 +14,9 @@ const Header = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
 
   return (
+    <>
+    <div className={styles.background}></div>
+    
     <div
       className={styles.wrapperHeader}
       onClick={() => (checked ? setChecked(!checked) : null)}
@@ -76,7 +79,7 @@ const Header = () => {
           </ul>
         </div>
         <div className={styles.searchAndCart}>
-          <div style={{ display: "flex" }}>
+          <div className={styles.searchAndCartWrapper}>
             <Image
               className={styles.loop}
               src={Loop}
@@ -101,6 +104,7 @@ const Header = () => {
         </div>
       </header>
     </div>
+    </>
   );
 };
 

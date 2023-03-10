@@ -1,8 +1,12 @@
-.banner {
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-  height: 55vh;
+.backgroundFooter{
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(0, #a9d4efeb, #e5f5ffe6, #f8fcff77), url('../public/flower.jpg') no-repeat center;
+  background-size: contain;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .imagesProductsBanner,
@@ -10,6 +14,10 @@
   object-fit: cover;
   object-position: 25% 78%;
   border-radius: 5px;
+}
+
+.imagesProductsBanner {
+  border-radius: 50%;
 }
 
 .imagesProducts:hover {
@@ -100,8 +108,9 @@
   text-align: center;
 }
 @media (max-width: 976px) {
-  .wrapperImageAndCTA img {
-    display: none;
+  .wrapperImageAndCTA {
+    display: flex;
+    flex-direction: column-reverse;
   }
   .bandeau {
     height: 35vh;
