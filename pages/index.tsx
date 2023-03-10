@@ -53,16 +53,46 @@ export default function Home({ categories, imagesBanner }: any) {
             <h1 className={homeStyles.h1}>
               Boucles d&apos;oreilles - Colliers - Bagues
             </h1>
-            <h2>Parce que vous le valez bien !</h2>
+            <h2 className={homeStyles.h2}>Parce que vous le valez bien !</h2>
             {/* <Button label={"Voir mes créations"} onClick={() => router.push('products/boucles')} /> */}
           </div>
-          <Image
-            className={homeStyles.imagesProductsBanner}
-            src={imagesBanner[0].image}
-            alt="zefhvzloi"
-            width={300}
-            height={300}
-          />
+          <div className={homeStyles.imagesCaroussel}>
+            <Image
+              className={homeStyles.imagesProductsBanner}
+              src={imagesBanner[0].image}
+              alt="zefhvzloi"
+              width={75}
+              height={75}
+            />
+            <Image
+              className={homeStyles.imagesProductsBanner}
+              src={imagesBanner[1].image}
+              alt="zefhvzloi"
+              width={150}
+              height={150}
+            />
+            <Image
+              className={homeStyles.imagesProductsBanner}
+              src={imagesBanner[0].image}
+              alt="zefhvzloi"
+              width={300}
+              height={300}
+            />
+            <Image
+              className={homeStyles.imagesProductsBanner}
+              src={imagesBanner[2].image}
+              alt="zefhvzloi"
+              width={150}
+              height={150}
+            />
+            <Image
+              className={homeStyles.imagesProductsBanner}
+              src={imagesBanner[2].image}
+              alt="zefhvzloi"
+              width={75}
+              height={75}
+            />
+          </div>
         </div>
         <hr className={homeStyles.hr} />
 
