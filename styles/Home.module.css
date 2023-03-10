@@ -144,6 +144,12 @@
     display: flex;
     flex-direction: column-reverse;
   }
+  .imagesProductsBanner1,
+  .imagesProductsBanner2,
+  .imagesProductsBanner4,
+  .imagesProductsBanner5 {
+    display: none;
+  }
   .bandeau {
     height: 35vh;
   }

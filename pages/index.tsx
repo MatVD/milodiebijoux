@@ -2,7 +2,6 @@ import Head from "next/head";
 import client from "../client/client";
 import Image from "next/image";
 import homeStyles from "../styles/Home.module.css";
-import Logo from "../public/Logo.png";
 import Button from "../components/Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -54,7 +53,6 @@ export default function Home({ categories, imagesBanner }: any) {
               Boucles d&apos;oreilles - Colliers - Bagues
             </h1>
             <h2 className={homeStyles.h2}>Parce que vous le valez bien !</h2>
-            {/* <Button label={"Voir mes créations"} onClick={() => router.push('products/boucles')} /> */}
           </div>
           <div className={homeStyles.wrapperImagesCaroussel}>
             <Image

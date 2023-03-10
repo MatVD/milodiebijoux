@@ -71,8 +71,7 @@
 
 .logo {
   margin: 16px;
-  object-fit: contain;
-  border-radius: 50%;
+  object-fit: cover;
 }
 
 .navul {
@@ -85,7 +84,7 @@
 
 .navli a {
   padding: 5px 0;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .navul > li {
@@ -115,7 +114,7 @@
 .menuButton::before,
 .menuButton::after {
   display: block;
-  background-color: rgb(156, 154, 154);
+  background-color: rgb(125, 123, 123);
   position: absolute;
   height: 3px;
   width: 30px;
@@ -125,12 +124,12 @@
 
 .menuButton::before {
   content: "";
-  margin-top: -6px;
+  margin-top: -8px;
 }
 
 .menuButton::after {
   content: "";
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 #menuToggle:checked + .menuButtonContainer .menuButton::before {
