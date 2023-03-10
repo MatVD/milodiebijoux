@@ -7,7 +7,7 @@
 .background {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, #53b1ebac, #e2eff9ef, #f8fcff30), url('../public/Éclaboussures_.png') no-repeat center;
+  background: linear-gradient(180deg, #53b1ebac, #e2eff9ef, #f8fcff30), url('../public/Eclaboussures.png') no-repeat center;
   background-size: cover;
   position: absolute;
   top: 0;
