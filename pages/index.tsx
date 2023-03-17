@@ -5,6 +5,7 @@ import homeStyles from "../styles/Home.module.css";
 import Button from "../components/Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Bijoux from "../public/photo1.jpg";
 
 // getStaticProps => fetch data from sanity
 export async function getStaticProps() {
@@ -71,7 +72,7 @@ export default function Home({ categories, imagesBanner }: any) {
             />
             <Image
               className={homeStyles.imagesProductsBanner3}
-              src={imagesBanner[0].image}
+              src={Bijoux}
               alt="zefhvzloi"
               width={300}
               height={300}

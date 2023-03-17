@@ -1,4 +1,4 @@
-.backgroundFooter{
+/* .backgroundFooter{
   width: 100vw;
   height: 100vh;
   background: linear-gradient(0, #a9d4eff0, #e5f5ffe6, #f8fcff62), url('../public/flower.jpg') no-repeat center;
@@ -7,7 +7,7 @@
   bottom: 0;
   left: 0;
   z-index: -1;
-}
+} */
 
 .wrapperImageAndCTA {
   max-width: 1100px;
