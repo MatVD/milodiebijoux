@@ -1,18 +1,15 @@
 import Stripe from "stripe";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Products } from "../../typings";
-import { type } from "os";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2022-11-15",
 });
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+async function checkoutSession(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     try {
       // Create Checkout Sessions from body params.
-
-
       const params: any = {
         submit_type: "pay",
         mode: "payment",
@@ -60,3 +57,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).end("Method Not Allowed");
   }
 };
+
+export default checkoutSession;
