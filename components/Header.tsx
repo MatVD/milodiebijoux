@@ -15,33 +15,18 @@ const Header = () => {
 
   return (
     <>
-    <div className={styles.background}></div>
-    
-    <div
-      className={styles.wrapperHeader}
-      onClick={() => (checked ? setChecked(!checked) : null)}
-    >
+    <div className={styles.wrapperHeader}
+      onClick={() => (checked ? setChecked(!checked) : null)}>
       <header
         className={styles.header}
-        onClick={() => (checked ? setChecked(!checked) : null)}
-      >
+        onClick={() => (checked ? setChecked(!checked) : null)}>
         <div className={styles.logoAndNav}>
-          <Link href="/">
-            <Image
-              className={styles.logo}
-              src={Logo}
-              priority={true}
-              alt="Logo"
-              width={60}
-            />
-          </Link>
 
           <input
             id={styles.menuToggle}
             type="checkbox"
             checked={checked}
-            onChange={() => {}}
-          />
+            onChange={() => {}}/>
           <label className={styles.menuButtonContainer} htmlFor="menuToggle">
             <div
               className={styles.menuButton}
@@ -79,7 +64,7 @@ const Header = () => {
           </ul>
         </div>
         <div className={styles.searchAndCart}>
-          <div className={styles.searchAndCartWrapper}>
+          {/* <div className={styles.searchAndCartWrapper}>
             <Image
               className={styles.loop}
               src={Loop}
@@ -87,7 +72,7 @@ const Header = () => {
               width={25}
             />
             <input className={styles.searchBar} type="text" />
-          </div>
+          </div> */}
           <button className={styles.cartIcon} onClick={() => setShowCart(true)}>
             <Image
               className={styles.cart}

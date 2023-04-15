@@ -19,44 +19,6 @@
   text-align: center;
 }
 
-.wrapperImagesCaroussel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-}
-
-.imagesProductsBanner,
-.imagesProducts {
-  object-fit: cover;
-  object-position: 25% 78%;
-  border-radius: 5px;
-}
-
-.imagesProductsBanner1 {
-  border-radius: 50%;
-  position: relative;
-  bottom: 55px;
-  left: 10px;
-}
-.imagesProductsBanner2 {
-  border-radius: 50%;
-}
-.imagesProductsBanner3 {
-  border-radius: 50%;
-  position: relative;
-  top: 25px;
-}
-.imagesProductsBanner4 {
-  border-radius: 50%;
-}
-.imagesProductsBanner5 {
-  border-radius: 50%;
-  position: relative;
-  bottom: 55px;
-  right: 10px;
-}
-
 .wrapperCTA {
   height: 100%;
   display: flex;

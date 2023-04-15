@@ -5,6 +5,7 @@ import client from "../../client/client";
 import Image from "next/image";
 import styles from "../../styles/Products.module.css";
 import Link from "next/link";
+import Header from "../../components/Header";
 
 export const getStaticProps = async (context: Context) => {
   const products =
@@ -37,6 +38,7 @@ type Props = {
 const Boucles = ({ products }: Props) => {
   return (
     <>
+    <Header/>
       <h1 style={{textAlign: 'center'}}>Boucles d&apos;oreilles</h1>
       <div className={styles.sectionProducts}>
         {products.map((product: any) => {

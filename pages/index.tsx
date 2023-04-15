@@ -4,10 +4,10 @@ import Image from "next/image";
 import homeStyles from "../styles/Home.module.css";
 import Button from "../components/Button";
 import Link from "next/link";
+import Carousel from "../components/Carousel";
 import { useRouter } from "next/router";
-import Bijoux from "../public/photo1.jpg";
+import Header from "../components/Header";
 
-// getStaticProps => fetch data from sanity
 export async function getStaticProps() {
   const categories = await client.fetch(`*[_type == "category"]{
     title,
@@ -18,26 +18,19 @@ export async function getStaticProps() {
     "image": image.asset->url,
   }`);
 
-  const imagesBanner = await client.fetch(`*[_type == "imageBanner"]{
-    title,
-    "id": _id,
-    slug {
-      current
-    },
-    "image": image.asset->url,
-  }`);
+  const res = await fetch('http://127.0.0.1:3001/api/data')
+  const carouselData = await res.json();
 
   return {
     props: {
       categories,
-      imagesBanner,
+      carouselData
     },
   };
 }
 
-export default function Home({ categories, imagesBanner }: any) {
+export default function Home({ categories, carouselData }: any) {
   const router = useRouter()
-
   return (
     <>
       <Head>
@@ -47,6 +40,7 @@ export default function Home({ categories, imagesBanner }: any) {
           content="Milodie Bijoux - creation de bijoux"
         />
       </Head>
+
       <div>
         <div className={homeStyles.wrapperImageAndCTA}>
           <div className={homeStyles.wrapperCTA}>
@@ -55,45 +49,11 @@ export default function Home({ categories, imagesBanner }: any) {
             </h1>
             <h2 className={homeStyles.h2}>Parce que vous le valez bien !</h2>
           </div>
-          <div className={homeStyles.wrapperImagesCaroussel}>
-            <Image
-              className={homeStyles.imagesProductsBanner1}
-              src={imagesBanner[0].image}
-              alt="zefhvzloi"
-              width={75}
-              height={75}
-            />
-            <Image
-              className={homeStyles.imagesProductsBanner2}
-              src={imagesBanner[1].image}
-              alt="zefhvzloi"
-              width={150}
-              height={150}
-            />
-            <Image
-              className={homeStyles.imagesProductsBanner3}
-              src={Bijoux}
-              alt="zefhvzloi"
-              width={300}
-              height={300}
-            />
-            <Image
-              className={homeStyles.imagesProductsBanner4}
-              src={imagesBanner[2].image}
-              alt="zefhvzloi"
-              width={150}
-              height={150}
-            />
-            <Image
-              className={homeStyles.imagesProductsBanner5}
-              src={imagesBanner[2].image}
-              alt="zefhvzloi"
-              width={75}
-              height={75}
-            />
-          </div>
         </div>
-        <hr className={homeStyles.hr} />
+        
+        <Header />
+
+        <Carousel carouselData={carouselData}/>
 
         <section className={homeStyles.sectionProducts}>
           {categories.map((category: any) => (
@@ -138,7 +98,6 @@ export default function Home({ categories, imagesBanner }: any) {
           </div>
         </section>
       </div>
-      <div className={homeStyles.backgroundFooter}></div>
     </>
   );
 }
