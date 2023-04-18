@@ -18,7 +18,7 @@ export async function getStaticProps() {
     "image": image.asset->url,
   }`);
 
-  const res = await fetch('http://127.0.0.1:3001/api/data')
+  const res = await fetch('http://127.0.0.1:3000/api/data')
   const carouselData = await res.json();
 
   return {
