@@ -9,17 +9,11 @@ import { useRouter } from "next/router";
 import Header from "../components/Header";
 
 export async function getStaticProps() {
-  const categories = await client.fetch(`*[_type == "category"]{
-    title,
-    "id": _id,
-    slug {
-      current
-    },
-    "image": image.asset->url,
-  }`);
+  const categoriesRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/categories`)
+  const categories = await categoriesRes.json();
 
-  const res = await fetch('http://127.0.0.1:3000/api/data')
-  const carouselData = await res.json();
+  const carouselDataRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`)
+  const carouselData = await carouselDataRes.json();
 
   return {
     props: {

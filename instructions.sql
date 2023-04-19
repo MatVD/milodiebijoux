@@ -1,4 +1,6 @@
+------------------------------------------------------------------
 -- Instructions de création de la base de données et des tables --
+------------------------------------------------------------------
 CREATE DATABASE milodie;
 
 CREATE TABLE users
@@ -7,7 +9,7 @@ CREATE TABLE users
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   pass VARCHAR(255) NOT NULL,
-  registrationDate DATETIME NOT NULL,
+  registration_date DATETIME NOT NULL,
   roles SET('customer', 'admin', 'superadmin')
 );
 
@@ -43,6 +45,8 @@ CREATE TABLE carts
   image VARCHAR(255),
   discount DECIMAL(10, 2),
   totalPrice DECIMAL(10, 2) default 0
+  FOREIGN KEY (product_id) REFERENCES products(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 )
 
 CREATE TABLE blogposts
@@ -52,3 +56,47 @@ CREATE TABLE blogposts
   description TEXT NOT NULL,
   image VARCHAR(255)
 )
+
+---------------------------------------------------------------------
+-- Instructions d'alimentation de la base de données et des tables --
+---------------------------------------------------------------------
+
+-- table users --
+INSERT INTO users 
+  (name, email, pass, registration_date, roles) 
+  VALUES 
+  ('Mat', 'mat@gmail.com', 'mdpTest', NOW(),'admin');
+
+INSERT INTO users 
+  (name, email, pass, registration_date) 
+  VALUES 
+  ('Flo', 'flo@gmail.com', 'mdpFlo', NOW());
+
+
+-- table products --
+INSERT INTO products
+  (name, description, image, price, categories)
+  VALUES
+  ('Boucle 1', 'Une belle paire de boucles', 'image1.jpg', 9.50, ['Boucles']);
+
+INSERT INTO products
+  (name, description, image, price, categories)
+  VALUES
+  ('Boucle 2', 'Une belle paire de boucles', 'image2.jpg', 15.50, ['Boucles']);
+
+INSERT INTO products
+  (name, description, image, price, categories)
+  VALUES
+  ('Boucle 3', 'Une belle paire de boucles', 'image3.jpg', 150.50, ['Boucles']);
+
+
+-- table carts --
+INSERT INTO carts 
+  (user_id)
+  VALUES
+  (1);
+
+INSERT INTO carts 
+  (user_id)
+  VALUES
+  (2);
